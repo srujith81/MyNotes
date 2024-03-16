@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Details</title>
+  <style>
+    body {
+    background-color: white;
+    color: brown;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    h1 {
+    font-size: 40px;
+    text-align: center;
+    }
+
+    img {
+    display: block;
+    margin: 0 auto;
+    width: 40%;
+    border: 1px solid #228B22;
+    border-radius: 50px;
+    }
+
+    form {
+    margin: 0 auto;
+    width: 50%;
+    }
+
+    input,
+    select,
+    textarea {
+    width: 100%;
+    margin-bottom: 10px;
+    border: 1px solid #228B22;
+    border-radius: 5px;
+    padding: 10px;
+    font-size: 16px;
+    font-family: cursive;
+    }
+
+    label {
+    font-size: 20px;
+    display: block;
+    margin-bottom: 5px;
+    font-size: 16px;
+    font-family: cursive;
+    }
+
+    button {
+    background-color: #228B22;
+    color: hwb(60 24% 12%);
+    border: none;
+    cursor: pointer;
+    font-size: 18px;
+    font-family: cursive;
+    border-radius: 50%;
+    padding: 10px;
+    float: right;
+    }
+
+    input[type="checkbox"] {
+    width: 20px;
+    height: 20px;
+    }
+
+    .checkboxes {
+    display: flex;
+    flex-direction: row;
+    flex-gap: 30px;
+    margin-left: 10px;
+    }
+
+    .date {
+    width: 100px;
+    float: left;
+    }
+
+    table {
+    border-collapse: collapse;
+    width: 100%;
+    border: 1px solid #228B22;
+    border-radius: 10px;
+    }
+
+    th {
+    background-color: #228B22;
+    color: white;
+    padding: 10px;
+    text-align: left;
+    }
+
+    td {
+    padding: 10px;
+    }
+
+    tr:nth-child(even) {
+    background-color: #f2f2f2;
+    }
+
+    .attribute-names {
+    color: #228B22;
+    }
+
+    .attribute-values {
+    color: #000000;
+    }
+
+  </style>
+</head>
+<body>
+  <h1>Tickets Data</h1>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Flying From</th>
+        <th>Flying To</th>
+        <th>Departing Date</th>
+        <th>Return Date</th>
+        <th>Number of Adults</th>
+        <th>Number of Children</th>
+        <th>Travel Class</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% adm_details.forEach(function(record) { %>
+        <tr>
+          <td><%= record.From %></td>
+          <td><%= record.To %></td>
+          <td><%= record.Depart_Date %></td>
+          <td><%= record.Return_Date %></td>
+          <td><%= record.N_Adults %></td>
+          <td><%= record.N_Child %></td>
+          <td><%= record.Travel_Class %></td>
+        </tr>
+      <% }); %>
+    </tbody>
+  </table>
+</body>
+</html>

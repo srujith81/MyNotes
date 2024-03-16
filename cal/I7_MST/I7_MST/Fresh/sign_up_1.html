@@ -1,0 +1,108 @@
+<!DOCTYPE html>   
+<html>   
+<head>  
+<title> Sign_In Page</title>  
+<style>   
+Body {  
+  font-family: sans-serif;  
+  background: linear-gradient(lightblue,skyblue);
+  background-image:url("airt_1.png");
+  
+
+}  
+button {   
+        background-color:grey;  
+        width: 100px;
+        font-size: medium;
+        color: rgb(246, 246, 250);   
+        padding: 15px;   
+        margin: 10px 0px;   
+        border: none;  
+        border-radius: 10px; 
+         }   
+ form {      
+        display: flex;
+        justify-content: center;
+    }   
+ input[type=text], input[type=password] {   
+        width: 300px;   
+        margin: 8px 0;  
+        padding: 12px 20px;   
+        display: inline-block;   
+        border: 2px solid rgb(0, 4, 128);   
+        box-sizing: border-box; 
+        border-radius: 10px;  
+    }  
+ button:hover {   
+        opacity: 0.7;   
+        background-color:white;
+        color: blue;
+    }   
+  .cancelbtn {   
+        width: auto;   
+        padding: 10px 18px;  
+        margin: 10px 5px;  
+    }     
+ .container {  
+        width: 500px;
+        height: 80vh; 
+        padding: 25px;   
+       
+        box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+        backdrop-filter: blur(5px);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        border-radius: 10px;
+        box-shadow: 1px 1px 5px 1px grey;
+        
+    }   
+</style>   
+</head>    
+<body >   < 
+    <center> <h1> Sign In Form</h1> </center>   
+    <form>  
+        <div class="container">  
+        <table>
+<form>
+<tr>
+<td><label>Enter Your  First Name : </label></td>
+<td><input type="text" placeholder="Enter  First Name"  name="fname" required/></td>
+</tr>
+<tr>
+<td><label>Enter Your  Last Name : </label></td>
+<td><input type="text" placeholder="Enter Last Name"  name="lname" required/></td>
+</tr>
+<tr>
+<td><label>Enter Your Age : </label></td>
+<td><input type="text" placeholder="Enter Age"  name="age" required/></td>
+</tr>
+<tr>
+<td><label>Enter Your Email : </label></td>
+<td><input type="text" placeholder="Enter Mail_Id" name="mail" required/></td>
+</tr>
+<tr>
+<td><label>Enter Your Mobile Name : </label></td>
+<td><input type="text" placeholder="Enter Mobile Number"  name="mob" required/></td>
+</tr>
+</form>
+</table>
+ 
+            <button type="submit" onclick="fun()" ><a href="index.html">Login</a></button>   
+            <button type="clear" onclick="fun()">Clear</button> 
+              
+        </div>   
+    </form> 
+    <script>
+        function fun(){
+    let a= document.getElementById("fname").value;
+    let b=document.getElementById("lname").value;
+    let c=document.getElementById("age").value;
+    let d=document.getElementById("mail").value;
+    let e=document.getElementById("mob").value;
+    
+}
+    </script>    
+</body>     
+</html>  

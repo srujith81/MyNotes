@@ -1,0 +1,106 @@
+<!DOCTYPE html>   
+<html>   
+<head>  
+<title> Sign_In Page1</title>  
+<style>   
+    body {  
+        font-family: sans-serif;  
+        /* background: linear-gradient(lightblue,skyblue); */
+        /*background-color: yellowgreen;*/
+        background-image: url('air_img.jpg');
+  }  
+.sbtn {   
+    background-color: #228B22;
+      color: hwb(60 24% 12%);
+      border: 59;
+      cursor: pointer;
+      font-size: 18px;
+      font-family: cursive;
+      border-radius: 50%;
+      padding: 10px;
+      float: right;
+         }   
+ form {      
+        display: flex;
+        justify-content: center;
+    }   
+ input[type=text], input[type=password] {   
+        width: 300px;   
+        margin: 8px 0;  
+        padding: 12px 20px;   
+        display: inline-block;   
+        border: 2px solid rgb(0, 4, 128);   
+        box-sizing: border-box; 
+        border-radius: 10px;  
+    }  
+ button:hover {   
+        opacity: 0.7;   
+        background-color:white;
+        color: blue;
+    }   
+  .cancelbtn {   
+        width: auto;   
+        padding: 10px 18px;  
+        margin: 10px 5px;  
+    }     
+ .container {  
+        width: 500px;
+        height: 80vh; 
+        padding: 25px;   
+       
+        box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+        backdrop-filter: blur(5px);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        border-radius: 10px;
+        box-shadow: 1px 1px 5px 1px grey;
+        
+    }   
+</style>   
+</head>    
+<body>  
+<h1 align="center">Sign In Form</h1>
+<center>
+<table>     
+    <form action="/submit"  method="post">
+        <table>
+            <tr>
+                <td><label>Enter Your  First Name : </label></td>
+                <td><input type="text" placeholder="Enter  First Name"  name="fname" required/></td>
+                </tr>
+                <tr>
+                <td><label>Enter Your  Last Name : </label></td>
+                <td><input type="text" placeholder="Enter Last Name"  name="lname" required/></td>
+                </tr>
+                <tr>
+                <td><label>Enter Your Age : </label></td>
+                <td><input type="text" placeholder="Enter Age"  name="age" required/></td>
+                </tr>
+                <tr>
+                <td><label>Enter Your Email : </label></td>
+                <td><input type="text" placeholder="Enter Mail_Id" name="email" required/></td>
+                </tr>
+                <tr>
+                <td><label>Enter Your Mobile Name : </label></td>
+                <td><input type="text" placeholder="Enter Mobile Number"  name="mob" required/></td>
+                </tr>
+                <tr>
+                    <td>
+                        <button type="submit" value="signup" class="sbtn">SignUp </button>
+                    </td>
+                    <td>
+                        <input type="reset" value="clear" class="sbtn"/>
+                    </td>
+                    
+                </tr>
+        </table>
+    </form>
+        <br>
+        <form action="/get_login" method="post">
+            <button type="submit" class="sbtn">Login</button>
+        </form>
+</center>
+</body>     
+</html>  

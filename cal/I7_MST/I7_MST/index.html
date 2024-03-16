@@ -1,0 +1,179 @@
+
+<html>
+<head>
+<title> Flight Ticket Booking Form</title>
+
+
+
+<link rel="stylesheet" href="style.css">
+
+</head>
+<style>
+	body{
+		background-image: url("kiku_1.png");
+	}
+	body{
+	background-image: linear-gradient(rgba(0,0,0,0.5));
+	background-size: cover;
+	background-position: center;
+}
+.booking-form-box
+{
+	max-width: 650px;
+	height: 450px;
+	border: 1px solid orange;
+	margin: 10% auto 0;
+	background-color:lightcoral;
+
+}
+.radio-btn
+{
+	margin: 20px 20px;
+
+}
+.radio-btn .btn{
+	margin: 20px 10px 20px 20px;
+	box-shadow: none;
+}
+.radio-btn .btn{
+	content:'' ;
+	height: 15px;
+	width: 15px;
+	top: 5px;
+	left: 5px;
+	background-color: #fff;
+	position: relative;
+	display: inline-block;
+	border: 3px solid #fff;
+	visibility: visible;
+	border-radius: 50%;
+}
+.radio-btn .btn:checked::after
+{
+     content: '';
+     background-color: #000;
+     transitioin: 0.5s;
+}
+.radio-btn span
+{
+	color: #fff;
+	margin-right: 5px;
+	font: 12px;
+}
+.booking-form-box{
+	padding: 20px 20px 20px;
+}
+.booking-form label
+{
+	margin-bottom: 5px;
+	margin-top: 10px;
+	font-size: 12px;
+	color: #fff;
+}
+input::placeholder
+{
+	color: #fff !important;
+}
+.input-grp
+{
+	display: flex;
+	margin-left:25%;
+	padding: 15px 15px 15px 15px;
+}
+.form-control
+{
+	font-size: 12px !important;
+	border-radius: 10% !important;	
+	color: #fff !important;
+	background: transparent !important;
+	box-shadow: none !important;
+
+}
+.select-date::-webkit-inner-spin-button,
+.select-date::-webkit-outer-spin-button,
+{
+	-weblit-appearance:  none;
+	margin: 10;
+}
+.select-date::-webkit-calender-picker-indicator
+{
+	background: transparent!important;
+}
+.custom-select{
+	color:  #fff!important;
+	font-size: 12px!important;
+	border: 1px solid #ced4da!important;
+	box-shadow: none!important;
+	border-radius: 0!important;
+	background: transparent!important;
+
+}
+.custon-select background-position{
+	color: #333;
+}
+.flight
+{
+	width: 100%!important;
+	padding: 9px 0!important;
+	font-size: 12px!important;
+	border: 1px solid #ced4da!important;
+	background: transparent!important;
+}
+.flight:hover
+{
+	background: #fff!important;
+	color: #000!important;
+	transition: 0.5s;
+
+}
+	</style>
+<body>
+	<form action="index_submit" method="post">
+<div class="booking-form-box">
+	<!--
+	<div class="radio-btn">
+			<input type="radio" class="btn" name="check_rt" checked="checked" ><span>RoundTrip</span>
+			<input type="radio" class="btn" name="check_on"><span>OneWay</span>
+			
+		</div>
+	-->
+	<div class="booking-form">
+		<label>Flying From</label>
+	<input type="text" class="form-control" placeholder="Enter Source city" name="ff"/>
+
+
+		</div>
+		<label>Flying To</label>
+		<input type="text" class="form-control" placeholder="Enter Destination City" name="ft"/>
+		<div class="input-grp">
+			<label>Departing Date</label>
+			<input type="date" class="form-control Select-date" name="dd"/>
+		</div>
+		<div class="input-grp">
+			<label>Return Date</label>
+			<input type="date" class="form-control Select-date" name="rd"/>
+		</div>
+		<div class="input-grp">
+			<label>No.of Adults : </label>
+			<input type="number" class="form-control" value="1" name="na"/>
+		</div>
+		<div class="input-grp">
+			<label>No.of Child : </label>
+			<input type="number" class="form-control" value="0" name="nc"/>
+		</div>
+		<div class="input-grp">
+			<label>Travel Class </label>
+			<select class="custom-select" name="tc"/>
+				<option value="1">Economy class</option>
+				<option value="2">Bussiness class</option>
+			</select>
+		</div>
+		<div class="input-grp">
+		<input type="submit" value="BOOK TICKETS" />
+		</div>
+	</div>
+</div>
+</form>
+
+</body>
+</html>

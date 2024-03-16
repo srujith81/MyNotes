@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Notes App</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+        }
+
+        h1 {
+            background-color: #007BFF;
+            color: white;
+            padding: 10px;
+        }
+
+        .notes-container {
+            max-width: 500px;
+            margin: 0 auto;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+
+        input,
+        textarea {
+            margin: 5px 0;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 3px;
+        }
+
+        button {
+            background: #007BFF;
+            color: white;
+            border: none;
+            padding: 10px;
+            border-radius: 3px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #0056b3;
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        li {
+            background: #f4f4f4;
+            border: 1px solid #ccc;
+            margin: 5px 0;
+            border-radius: 3px;
+            padding: 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        li button {
+            background: #ff3333;
+            color: white;
+            border: none;
+            padding: 5px;
+            border-radius: 3px;
+            cursor: pointer;
+        }
+
+        li button.edit {
+            background: #4CAF50;
+        }
+
+        li button:hover {
+            background: #cc0000;
+        }
+
+        li button.edit:hover {
+            background: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <h1>Notes App</h1>
+
+    <div class="notes-container">
+        <h2>Add a Note</h2>
+        <form id="note-form">
+            <input type="text" id="note-title" placeholder="Title" required>
+            <textarea id="note-content" placeholder="Note" required></textarea>
+            <button type="submit">Add Note</button>
+        </form>
+
+        <h2>My Notes</h2>
+        <ul id="note-list">
+            <!-- Existing notes will be listed here -->
+        </ul>
+    </div>
+
+    <script>
+        // Function to add a note
+        function addNote() {
+            const title = document.getElementById('note-title').value;
+            const content = document.getElementById('note-content').value;
+
+            if (title && content) {
+                const notesList = document.getElementById('note-list');
+                const newNote = document.createElement('li');
+                newNote.innerHTML = `<strong>${title}</strong><p>${content}</p>
+                    <button class="edit" onclick="editNote(this)">Edit</button>
+                    <button onclick="deleteNote(this)">Delete</button>`;
+                notesList.appendChild(newNote);
+
+                // Store the note in localStorage
+                const notes = JSON.parse(localStorage.getItem('notes')) || [];
+                notes.push({ title, content });
+                localStorage.setItem('notes', JSON.stringify(notes));
+
+                // Clear form inputs
+                document.getElementById('note-title').value = '';
+                document.getElementById('note-content').value = '';
+            }
+        }
+
+        // Function to edit a note
+        function editNote(button) {
+            const notesList = document.getElementById('note-list');
+            const notes = JSON.parse(localStorage.getItem('notes')) || [];
+
+            const li = button.parentElement;
+            const index = Array.from(notesList.children).indexOf(li);
+
+            if (index > -1) {
+                const editButton = li.querySelector('.edit');
+                editButton.textContent = 'Update';
+                editButton.onclick = function () {
+                    updateNote(li, index);
+                };
+
+                const note = notes[index];
+                document.getElementById('note-title').value = note.title;
+                document.getElementById('note-content').value = note.content;
+            }
+        }
+
+        // Function to update a note
+        function updateNote(li, index) {
+            const notes = JSON.parse(localStorage.getItem('notes')) || [];
+            const title = document.getElementById('note-title').value;
+            const content = document.getElementById('note-content').value;
+
+            if (title && content) {
+                notes[index].title = title;
+                notes[index].content = content;
+                localStorage.setItem('notes', JSON.stringify(notes));
+
+                li.innerHTML = `<strong>${title}</strong><p>${content}</p>
+                    <button class="edit" onclick="editNote(this)">Edit</button>
+                    <button onclick="deleteNote(this)">Delete</button>`;
+                document.getElementById('note-title').value = '';
+                document.getElementById('note-content').value = '';
+            }
+        }
+
+        // Function to delete a note
+        function deleteNote(button) {
+            const notesList = document.getElementById('note-list');
+            const notes = JSON.parse(localStorage.getItem('notes')) || [];
+
+            const li = button.parentElement;
+            const index = Array.from(notesList.children).indexOf(li);
+
+            if (index > -1) {
+                notesList.removeChild(li);
+                notes.splice(index, 1);
+                localStorage.setItem('notes', JSON.stringify(notes));
+            }
+        }
+
+        // Load notes from localStorage
+        function loadNotes() {
+            const notes = JSON.parse(localStorage.getItem('notes')) || [];
+            const notesList = document.getElementById('note-list');
+
+            notes.forEach((note) => {
+                const newNote = document.createElement('li');
+                newNote.innerHTML = `<strong>${note.title}</strong><p>${note.content}</p>
+                    <button class="edit" onclick="editNote(this)">Edit</button>
+                    <button onclick="deleteNote(this)">Delete</button>`;
+                notesList.appendChild(newNote);
+            });
+        }
+
+        // Attach the addNote function to the form submission
+        document.getElementById('note-form').addEventListener('submit', function (e) {
+            e.preventDefault();
+            addNote();
+        });
+
+        // Load existing notes when the page loads
+        loadNotes();
+    </script>
+	<!-- Include this script tag at the end of your HTML file -->
+<script>
+    // Function to add a note
+    function addNote() {
+        const title = document.getElementById('note-title').value;
+        const content = document.getElementById('note-content').value;
+
+        if (title && content) {
+            // Send a POST request to save the note in the MongoDB database
+            fetch('/api/notes', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ title, content }),
+            })
+                .then((response) => response.json())
+                .then((data) => {
+                    // Update the note list with the saved note
+                    const notesList = document.getElementById('note-list');
+                    const newNote = document.createElement('li');
+                    newNote.innerHTML = `<strong>${data.note.title}</strong><p>${data.note.content}</p>
+                        <button class="edit" onclick="editNote(this)">Edit</button>
+                        <button onclick="deleteNote(this)">Delete</button>`;
+                    notesList.appendChild(newNote);
+
+                    // Clear form inputs
+                    document.getElementById('note-title').value = '';
+                    document.getElementById('note-content').value = '';
+                });
+        }
+    }
+
+    // Function to edit a note
+    function editNote(button) {
+        const notesList = document.getElementById('note-list');
+        const notes = Array.from(notesList.children);
+        const li = button.parentElement;
+        const index = notes.indexOf(li);
+
+        if (index > -1) {
+            const editButton = li.querySelector('.edit');
+            editButton.textContent = 'Update';
+            editButton.onclick = function () {
+                updateNote(li, index);
+            };
+
+            const note = notes[index];
+            document.getElementById('note-title').value = note.querySelector('strong').textContent;
+            document.getElementById('note-content').value = note.querySelector('p').textContent;
+        }
+    }
+
+// Function to update a note
+function updateNote(li) {
+    const title = document.getElementById('note-title').value;
+    const content = document.getElementById('note-content').value;
+    const noteId = li._id; // Use li._id instead of note._id
+
+    if (title && content) {
+        // Send a PUT request to update the note in the MongoDB database
+        fetch(`/api/notes/${noteId}`, {
+            method: 'PUT',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ title, content }),
+        })
+            .then((response) => response.json())
+            .then((data) => {
+                // Update the note in the list
+                li.querySelector('strong').textContent = data.note.title;
+                li.querySelector('p').textContent = data.note.content;
+                const editButton = li.querySelector('.edit');
+                editButton.textContent = 'Edit';
+                editButton.onclick = function () {
+                    editNote(this);
+                };
+
+                // Clear form inputs
+                document.getElementById('note-title').value = '';
+                document.getElementById('note-content').value = '';
+            });
+    }
+}
+
+// Function to delete a note
+function deleteNote(button) {
+    const notesList = document.getElementById('note-list');
+    const li = button.parentElement;
+    const noteId = li._id; // Use li._id instead of note._id
+
+    // Send a DELETE request to remove the note from the MongoDB database
+    fetch(`/api/notes/${noteId}`, {
+        method: 'DELETE',
+    })
+        .then(() => {
+            notesList.removeChild(li);
+        });
+}
+
+
+
+  // Load notes from the MongoDB database when the page loads
+function loadNotes() {
+    fetch('/api/notes')
+        .then((response) => response.json())
+        .then((data) => {
+            const notesList = document.getElementById('note-list');
+            data.notes.forEach((note) => {
+                const newNote = document.createElement('li');
+                newNote._id = note._id; // Set the _id here
+                newNote.innerHTML = `<strong>${note.title}</strong><p>${note.content}</p>
+                    <button class="edit" onclick="editNote(this)">Edit</button>
+                    <button onclick="deleteNote(this)">Delete</button>`;
+                notesList.appendChild(newNote);
+            });
+        });
+}
+
+// ...rest of your code...
+
+
+    // Attach the addNote function to the form submission
+    document.getElementById('note-form').addEventListener('submit', function (e) {
+        e.preventDefault();
+        addNote();
+    });
+
+    // Load existing notes when the page loads
+    loadNotes();
+</script>
+
+</body>
+</html>

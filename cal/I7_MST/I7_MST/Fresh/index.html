@@ -1,0 +1,56 @@
+<html>
+<head>
+<title> Flight Ticket Booking Form</title>
+<style>
+	body{
+		background-image: url("air_1.png");
+	}
+	</style>
+
+
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css">
+</head>
+<body>
+<div class="booking-form-box">
+	<div class="radio-btn">
+		<input type="radio" class="btn" name="check" checked="checked" ><span>Round_Trip</span>
+		<input type="radio" class="btn" name="check"><span>Multi_City</span>
+		<input type="radio" class="btn" name="check"><span>One_Way</span>
+	</div>
+	<div class="booking-form">
+		<label>Flying From</label>
+		<input type="text" name="sc" class="form-control" placeholder="Enter Source City"  name="ff"/>
+		<label>Flying To</label>
+		<input type="text" name="dc" class="form-control" placeholder="Enter Destination City" name="ft"/>
+		<div class="input-grp">
+			<label>Departing Date</label>
+			<input type="date" class="form-control Select-date" name="dd">
+		</div>
+		<div class="input-grp">
+			<label>Return Date</label>
+			<input type="date" class="form-control Select-date" name="rd">
+		</div>
+		<div class="input-grp">
+			<label>No.of Adults : </label>
+			<input type="number" class="form-control" value="1" name="na">
+		</div>
+		<div class="input-grp">
+			<label>No.of Children : </label>
+			<input type="number" class="form-control" value="0" name="nc">
+		</div>
+		<div class="input-grp">
+			<label>Travel Class </label>
+			<select class="custom-select" name="tc">
+				<option value="1">Economy class</option>
+				<option value="2">Bussiness class</option>
+			</select>
+		</div>
+		<div class="input-grp">
+			<button type="button" class="btn btn-primary flight"><a href="final.html">Book Tickets</a></button>
+		</div>
+	</div>
+</div>
+
+</body>
+</html>
